@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --section-bg: #f9fafb;
+  --text-color: #1f2937;
+  --text-muted: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --primary-color: #10b981; /* green-500 */
+}
+
+html.dark {
+  --nav-bg: rgba(17, 24, 39, 0.8);
+  --section-bg: #1f2937;
+  --text-color: #f9fafb;
+  --text-muted: #9ca3af;
+  --card-bg: #374151;
+  --card-border: #4b5563;
+}
+
+body {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.bg-section-bg {
+  background-color: var(--section-bg);
+}
+
+.bg-nav-bg {
+  background-color: var(--nav-bg);
+}
+
+/* FAQ Item Styling */
+.faq-item .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding-bottom: 0;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px; /* Adjust as needed */
+  padding-bottom: 1rem;
+}
+
+.faq-item .faq-icon {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* Testimonial Carousel */
+.testimonials-wrapper {
+  position: relative;
+}
+
+.testimonials-container {
+  overflow-x: auto;
+  scrollbar-width: none; /* For Firefox */
+}
+
+.testimonials-container::-webkit-scrollbar {
+  display: none; /* For Webkit browsers */
+}
+
+.testimonials-track {
+  display: flex;
+  animation: scroll 60s linear infinite;
+}
+
+.testimonial-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.testimonial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonials-wrapper:hover .testimonials-track {
+  animation-play-state: paused;
+}
+
+.testimonial-fade-left {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    background: linear-gradient(to right, var(--section-bg), transparent);
+    pointer-events: none;
+}
+
+.testimonial-fade-right {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    background: linear-gradient(to left, var(--section-bg), transparent);
+    pointer-events: none;
+}
