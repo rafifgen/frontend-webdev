@@ -173,8 +173,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	);
 
 	const isAdmin = useCallback((): boolean => {
-		return hasRole("admin");
-	}, [hasRole]);
+		return user?.role?.id === 1; // Admin role has ID 1 in the backend
+	}, [user]);
 
 	const isUser = useCallback((): boolean => {
 		return hasRole("user");
